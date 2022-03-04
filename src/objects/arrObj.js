@@ -23,7 +23,7 @@ export const objToArr = (mainObj) => {
         arrObj[index][1].breweries = tempBrews[index]
     })
 
-    //using generic sort instead of "localeCompare", since there is a capitalization rule
+    //using generic sort instead of "localeCompare", because there is a capitalization rule
     arrObj.sort()
     for (let index = 0; index < arrObj.length; index++)
         arrObj[index][1].breweries.sort()

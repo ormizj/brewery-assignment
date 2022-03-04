@@ -4,10 +4,9 @@ import { returnWord } from "../utils/stringUtil"
 //TODO documentation for this file
 
 /**
- * function that returns the "mainObj" structure 
- * (created for representation)
+ * function that returns the "mainObj" structure (created for representation)
  * 
- * @returns "mainObj" template object
+ * @returns {JSON} "mainObj" template
  */
 const mainObjTemplate = () => {
 
@@ -25,14 +24,10 @@ const mainObjTemplate = () => {
         }
     }
 
+    delete objTemplate.states['']
     return objTemplate
 }
 
-/**
- * 
- * @param {JSON} mainObj
- * @param {JSON} values 
- */
 export const objInsert = (mainObj, { state, brewery, city, street }) => {
     ({ state, city, street } = objValueToWord({ state, city, street }))
 
@@ -44,7 +39,7 @@ export const objInsert = (mainObj, { state, brewery, city, street }) => {
         }
     }
 
-    //creating the brewery
+    //creating the brewery and returning them
     mainObj.states[state].breweries[brewery] = { city, street }
 
     return mainObj

@@ -37,6 +37,11 @@ function BrewTableButton(props) {
         props.resetForm()
     }
 
+    /**
+     * Complexity: Time- O(n); Space- O(n) [n = selected breweries]
+     * 
+     * @returns {Array} selected breweries as JSON inside an Array
+     */
     const valuesToJson = () => {
         const jsonValues = []
         return props.values.checked.map((element, index) => jsonValues[index] = JSON.parse(element))

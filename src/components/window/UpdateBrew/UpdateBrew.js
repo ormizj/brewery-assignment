@@ -27,15 +27,13 @@ function UpdateBrew(props) {
         //formatting values
         values = formatObjInput(values)
 
-        //checking if brewery exists, if changed, and sends back an alert
-        if (values.brewery !== brewery) {
-            if (isBrewExist(mainObj, values))
-                return alert(`A Brewery with the name "${values.brewery}" already exists, try a different name`)
+        //checking if brewery exists, if changed by user, and sends back an alert
+        if (values.brewery !== brewery && isBrewExist(mainObj, values)) {
+            return alert(`A Brewery with the name "${values.brewery}" already exists, try a different name`)
         }
 
         //deleting old brewery
         objDelete(mainObj, { state, brewery })
-
         //inserting brewery
         objInsert(mainObj, values)
 

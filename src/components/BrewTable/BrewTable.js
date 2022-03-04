@@ -17,15 +17,12 @@ function BrewTable() {
     useEffect(() => {
         getBreweries().then(response => {
             if (!response.data) throw response;
-            //setting a temporary "mainObj"
-            let tempObj = mainObjTemplate()
 
             //instantiating "mainObj"
-            for (let data of response.data) {
-                data['brewery'] = data.id
-                tempObj = objInsert(tempObj, data)
+            const tempObj = mainObjTemplate()
+            for (let { state, city, street, id } of response.data) {
+                objInsert(tempObj, { state, city, street, brewery: id })
             }
-            delete tempObj.states['']
             setMainObj(tempObj)
 
         }).catch(error => {
@@ -37,7 +34,6 @@ function BrewTable() {
     const renderTable = (handleChange) => {
         //stopping the function, if the "mainObj" has yet to be initialized
         if (mainObj.states['']) return
-
         const arrObj = objToArr(mainObj)
         let tableIndex = 0
 
