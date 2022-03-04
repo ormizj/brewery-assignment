@@ -33,22 +33,21 @@ const mainObjTemplate = () => {
  * @param {JSON} mainObj
  * @param {JSON} values 
  */
-export const objInsert = (mainObj, values) => {
-    objValueToWord(values)
+export const objInsert = (mainObj, { state, brewery, city, street }) => {
+    ({ state, city, street } = objValueToWord({ state, city, street }))
 
     //creating the state "key", if it doesn't exist
-    if (!mainObj.states[values.state]) {
-        mainObj.states[values.state] = {
-            stateName: values.state,
+    if (!mainObj.states[state]) {
+        mainObj.states[state] = {
+            stateName: state,
             breweries: {}
         }
     }
 
     //creating the brewery
-    mainObj.states[values.state].breweries[values.brewery] = {
-        city: values.city,
-        street: values.street
-    }
+    mainObj.states[state].breweries[brewery] = { city, street }
+
+    return mainObj
 }
 
 export const objDelete = (mainObj, { state, brewery }) => {
@@ -61,13 +60,15 @@ export const objDelete = (mainObj, { state, brewery }) => {
     return mainObj
 }
 
-export const formatObjInput = (input) => {
-    objValueToWord(input)
+export const formatObjInput = ({ state, city, street, brewery }) => {
+    ({ state, city, street } = objValueToWord({ state, city, street }))
 
-    input.state = _.startCase(_.toLower(input.state))
-    input.city = _.startCase(_.toLower(input.city))
-    input.street = _.startCase(_.toLower(input.street))
-    input.brewery = input.brewery.replace(/ /g, '-')
+    state = _.startCase(_.toLower(state))
+    city = _.startCase(_.toLower(city))
+    street = _.startCase(_.toLower(street))
+    brewery = brewery.replace(/ /g, '-')
+
+    return { state, city, street, brewery }
 }
 
 export const isBrewExist = (mainObj, { brewery }) => {
@@ -81,7 +82,7 @@ export const isBrewExist = (mainObj, { brewery }) => {
 }
 
 export const findBrew = (mainObj, { state, brewery }) => {
-    let brew = { state, brewery }
+    const brew = { state, brewery }
 
     //if state doesn't exists, return
     if (!mainObj.states[state]) return
@@ -95,10 +96,12 @@ export const findBrew = (mainObj, { state, brewery }) => {
     return null
 }
 
-const objValueToWord = (values) => {
-    values.state = returnWord(values.state)
-    values.city = returnWord(values.city)
-    values.street = returnWord(values.street)
+const objValueToWord = ({ state, city, street }) => {
+    state = returnWord(state)
+    city = returnWord(city)
+    street = returnWord(street)
+
+    return { state, city, street }
 }
 
 export default mainObjTemplate

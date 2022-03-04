@@ -25,7 +25,7 @@ function UpdateBrew(props) {
         let tempObj = _.cloneDeep(props.mainObj)
 
         //formatting values
-        formatObjInput(values)
+        values = formatObjInput(values)
 
         //checking if brewery exists, if changed, and sends back an alert
         if (values.brewery !== brewery) {
@@ -37,7 +37,7 @@ function UpdateBrew(props) {
         tempObj = objDelete(tempObj, { state, brewery })
 
         //inserting brewery
-        objInsert(tempObj, values)
+        tempObj = objInsert(tempObj, values)
 
         //setting mainObj and redirecting user back to the brew table
         setTimeout(() => { alert("Brewery updated successfully") }, (0))

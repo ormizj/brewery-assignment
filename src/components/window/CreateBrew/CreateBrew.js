@@ -11,17 +11,17 @@ import './create-brew.css'
 function CreateBrew(props) {
 
     const handleSubmit = (values) => {
-        const tempObj = _.cloneDeep(props.mainObj)
+        let tempObj = _.cloneDeep(props.mainObj)
 
         //formatting values
-        formatObjInput(values)
+        values = formatObjInput(values)
 
         //sending back alert, if brewery already exists
         if (isBrewExist(props.mainObj, values))
             return alert(`A Brewery with the name "${values.brewery}" already exists, try a different name`)
 
         //inserting brewery
-        objInsert(tempObj, values)
+        tempObj = objInsert(tempObj, values)
 
         //setting mainObj and redirecting user back to the brew table
         setTimeout(() => { alert("Brewery created successfully") }, (0))

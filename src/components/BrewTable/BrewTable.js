@@ -19,12 +19,12 @@ function BrewTable() {
         getBreweries().then(response => {
             if (!response.data) throw response;
             //setting a temporary "mainObj"
-            const tempObj = mainObjTemplate()
+            let tempObj = mainObjTemplate()
 
             //instantiating "mainObj"
             for (let data of response.data) {
                 data['brewery'] = data.id
-                objInsert(tempObj, data)
+                tempObj = objInsert(tempObj, data)
             }
             delete tempObj.states['']
             setMainObj(tempObj)
