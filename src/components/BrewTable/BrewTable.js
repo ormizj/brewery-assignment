@@ -20,8 +20,8 @@ function BrewTable() {
 
             //instantiating "mainObj"
             const tempObj = mainObjTemplate()
-            for (let { state, city, street, id } of response.data) {
-                objInsert(tempObj, { state, city, street, brewery: id })
+            for (let { state, city, street, id: brewery } of response.data) {
+                objInsert(tempObj, { state, city, street, brewery })
             }
             setMainObj(tempObj)
 
