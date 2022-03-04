@@ -1,5 +1,5 @@
 import "./brew-table.css";
-import { useState, useEffect, useRef, createRef } from 'react'
+import { useState, useEffect } from 'react'
 import { getBreweries } from '../../api/brewery.js'
 import mainObjTemplate, { objInsert } from "../../objects/mainObj";
 import { Form, Formik } from 'formik'
