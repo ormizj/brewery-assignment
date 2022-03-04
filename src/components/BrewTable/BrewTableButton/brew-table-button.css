@@ -1,0 +1,21 @@
+.BrewTableButton {
+    right: 0;
+    top: 45vh;
+    transform: translateY(-50%);
+    width: 12vw;
+    width: 11vw ;
+    height: 30vh;
+    margin-right: 1vw;
+    position: fixed;
+    padding-top: 5vh;    
+}
+
+.BrewTableButton-seperator {
+    height: 10vh;
+}
+
+.BrewTableButton button {
+    width: 10vw;
+    font-size: 1.2vw;
+    padding: 1vh;
+}

@@ -1,0 +1,38 @@
+.BrewTable { 
+    margin-right: 15vw;
+    margin-left: 2vw;
+    margin-top: 5vh;
+    text-align: left;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.834);
+    overflow: auto;
+    height: 90vh; 
+    width: 83vw;
+    overflow-x: auto;
+    white-space: nowrap;
+    border-radius: 3px;
+}
+
+.BrewTable thead th { 
+    position: sticky; 
+    top: 0;
+    z-index: 1;
+    background-color: rgb(200, 200, 200); 
+}
+
+.BrewTable tbody th { 
+    position: sticky; left: 0; 
+}
+
+.BrewTable-checkbox {
+    text-align: center;
+    background-color: rgb(200, 200, 200) !important;
+}
+
+.BrewTable tbody input {
+    cursor: pointer;
+}
+
+.BrewTable tbody label {
+    cursor: pointer;
+    width: 100%;
+}

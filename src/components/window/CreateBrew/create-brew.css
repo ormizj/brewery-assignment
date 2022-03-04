@@ -1,0 +1,16 @@
+.CreateBrew div, .CreateBrew input{
+    border-radius: unset;
+    margin-top: 1%;
+}
+
+#CreateBrew-state-div {
+    padding-right: 32.5px;
+}
+
+#CreateBrew-city-div {
+    padding-right: 41px;
+}
+
+#CreateBrew-street-div {
+    padding-right: 27px;
+}

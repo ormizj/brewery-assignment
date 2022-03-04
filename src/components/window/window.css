@@ -1,0 +1,65 @@
+.window-background {
+    margin-top: -5vh;
+    margin-left: -2vw;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2;
+    opacity: 75%;
+    position: fixed;
+    background-color:black;
+    animation: fadeIn 1s;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 0.75;
+    }
+}
+
+.window-box{
+    z-index: 2;
+    margin-left: 25%;
+    margin-right: 25%;
+    position: fixed;
+    background-color: whitesmoke;
+    width: 50vw;
+    animation: slideInDown 1s;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px black;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+}
+@keyframes slideInDown {
+    from {
+    top:-100%;
+    } 
+    to {
+     top: 50%;
+    }
+}
+
+#window-box-big {
+    margin-left: 12.5% !important;
+    margin-right: 12.5% !important;
+    width: 75vw !important;
+}
+
+.close-div {
+    text-align: right;
+    margin-top: 2%;
+    margin-right: 2%;
+}
+
+.window-box h5 {
+    margin-top: -26px;
+    margin-bottom: 2%;
+}
+
+.window-submit {
+    padding-top: 1%;
+    margin-bottom: 2%;
+}

@@ -1,0 +1,38 @@
+.UpdateBrew table{
+    width: 100%;
+}
+
+.UpdateBrew div, .UpdateBrew input{
+    border-radius: unset;
+    margin-top: 1.5%;
+}
+
+.UpdateBrew input {
+    cursor: text !important;
+}
+
+.UpdateBrew-from input {
+    margin-left:-2px;
+}
+
+.UpdateBrew-to input {
+    margin-left: -3px;
+    margin-right: -2px;
+}
+
+.UpdateBrew .window-submit {
+    margin-top: unset;
+    margin-bottom: 1%;
+}
+
+#UpdatedBrew-state-div{
+    padding-left:33px
+}
+
+#UpdatedBrew-city-div{
+    padding-left:41.5px
+}
+
+#UpdatedBrew-street-div{
+    padding-left:27px
+}
