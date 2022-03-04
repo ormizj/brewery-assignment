@@ -70,11 +70,11 @@ export const formatObjInput = (input) => {
     input.brewery = input.brewery.replace(/ /g, '-')
 }
 
-export const isBrewExist = (mainObj, brew) => {
+export const isBrewExist = (mainObj, { brewery }) => {
     const states = Object.values(mainObj.states)
 
     for (let state of states) {
-        if (state.breweries[brew])
+        if (state.breweries[brewery])
             return true
     }
     return false;

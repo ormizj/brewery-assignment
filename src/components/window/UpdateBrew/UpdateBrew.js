@@ -29,7 +29,7 @@ function UpdateBrew(props) {
 
         //checking if brewery exists, if changed, and sends back an alert
         if (values.brewery !== brewery) {
-            if (isBrewExist(props.mainObj, values.brewery))
+            if (isBrewExist(props.mainObj, values))
                 return alert(`A Brewery with the name "${values.brewery}" already exists, try a different name`)
         }
 

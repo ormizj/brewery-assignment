@@ -5,8 +5,8 @@ import _ from "lodash"
 /**
  * Complexity: Time - O(n log n); Space - O(n)
  * 
- * @param mainObj
- * @returns 
+ * @param {JSON} mainObj
+ * @returns {Array} "mainObj" as an Array
  */
 export const objToArr = (mainObj) => {
     //cloning "Obj" to remove aliasing 
