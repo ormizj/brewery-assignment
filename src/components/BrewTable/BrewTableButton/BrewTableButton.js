@@ -24,11 +24,11 @@ function BrewTableButton(props) {
 
         //ensuring the user selected at least 1 value
         if (_.isEmpty(values))
-            return setTimeout(() => { alert("You need to select at least one Brewery to delete") }, 0)
+            return alert("You need to select at least one Brewery to delete")
 
-        //deleting brewery from "mainObj" (and states if empty)
+        //deleting brewery from "mainObj" (and states if they are empty)
         for (let value of values) {
-            mainObj = objDelete(mainObj, value)
+            objDelete(mainObj, value)
         }
 
         //placing "alert" in a timeout, so the user can see the change, while the alert is showing 

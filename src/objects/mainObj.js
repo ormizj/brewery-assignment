@@ -57,7 +57,6 @@ export const objDelete = (mainObj, { state, brewery }) => {
     delete mainObj.states[state].breweries[brewery]
     if (_.isEmpty(mainObj.states[state].breweries))
         delete mainObj.states[state]
-    return mainObj
 }
 
 export const formatObjInput = ({ state, city, street, brewery }) => {

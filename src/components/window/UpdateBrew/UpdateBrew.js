@@ -22,28 +22,28 @@ function UpdateBrew(props) {
     }
 
     const handleSubmit = (values) => {
-        let tempObj = _.cloneDeep(props.mainObj)
+        const mainObj = props.mainObj
 
         //formatting values
         values = formatObjInput(values)
 
         //checking if brewery exists, if changed, and sends back an alert
         if (values.brewery !== brewery) {
-            if (isBrewExist(props.mainObj, values))
+            if (isBrewExist(mainObj, values))
                 return alert(`A Brewery with the name "${values.brewery}" already exists, try a different name`)
         }
 
         //deleting old brewery
-        tempObj = objDelete(tempObj, { state, brewery })
+        objDelete(mainObj, { state, brewery })
 
         //inserting brewery
-        tempObj = objInsert(tempObj, values)
+        objInsert(mainObj, values)
 
         //setting mainObj and redirecting user back to the brew table
         setTimeout(() => { alert("Brewery updated successfully") }, (0))
         history.push('/brew-table')
+        props.setMainObj(mainObj)
         props.resetSelection()
-        props.setMainObj(tempObj)
     }
 
     const renderTable = () => {

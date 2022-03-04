@@ -1,5 +1,4 @@
 import { Field, Form, Formik } from 'formik'
-import _ from 'lodash'
 import { formatObjInput, objInsert, isBrewExist } from '../../../objects/mainObj'
 import { closeDiv } from '../../../utils/windowUtil'
 import history from '../../history'
@@ -11,23 +10,23 @@ import './create-brew.css'
 function CreateBrew(props) {
 
     const handleSubmit = (values) => {
-        let tempObj = _.cloneDeep(props.mainObj)
+        const mainObj = props.mainObj
 
         //formatting values
         values = formatObjInput(values)
 
         //sending back alert, if brewery already exists
-        if (isBrewExist(props.mainObj, values))
+        if (isBrewExist(mainObj, values))
             return alert(`A Brewery with the name "${values.brewery}" already exists, try a different name`)
 
         //inserting brewery
-        tempObj = objInsert(tempObj, values)
+        objInsert(mainObj, values)
 
         //setting mainObj and redirecting user back to the brew table
         setTimeout(() => { alert("Brewery created successfully") }, (0))
         history.push('/brew-table')
+        props.setMainObj(mainObj)
         props.resetSelection()
-        props.setMainObj(tempObj)
     }
 
     return (
