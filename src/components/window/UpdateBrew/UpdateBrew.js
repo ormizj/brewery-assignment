@@ -43,7 +43,7 @@ function UpdateBrew(props) {
         setTimeout(() => { alert("Brewery updated successfully") }, (0))
         history.push('/brew-table')
         props.setMainObj(mainObj)
-        props.resetSelection()
+        props.resetForm()
     }
 
     const renderTable = () => {

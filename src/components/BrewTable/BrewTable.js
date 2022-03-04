@@ -5,6 +5,7 @@ import mainObjTemplate, { objInsert } from "../../objects/mainObj";
 import { Form, Formik } from 'formik'
 import BrewTableButton from "./BrewTableButton/BrewTableButton";
 import { objToArr } from "../../objects/arrObj";
+import { Field } from "formik";
 
 //TODO documentation for this file
 
@@ -12,8 +13,6 @@ function BrewTable() {
 
     //creating "mainObj" state
     const [mainObj, setMainObj] = useState(mainObjTemplate())
-    //ref array, to reset checkbox selection
-    const brewRef = useRef([])
 
     useEffect(() => {
         getBreweries().then(response => {
@@ -39,8 +38,6 @@ function BrewTable() {
         //stopping the function, if the "mainObj" has yet to be initialized
         if (mainObj.states['']) return
 
-        //function to initialize ref array, and creating the table required variables
-        const initRefArray = (index) => { brewRef.current[index] = createRef() }
         const arrObj = objToArr(mainObj)
         let tableIndex = 0
 
@@ -49,9 +46,8 @@ function BrewTable() {
             return (element[1].breweries.map((brewE) => {
                 return (
                     <tr key={brewE[2]}>
-                        {initRefArray(tableIndex)}
                         <th className="BrewTable-checkbox">
-                            <input ref={brewRef.current[tableIndex]} type="checkbox" name="checked" value={`{"state": "${element[0]}","brewery": "${brewE[1]}"}`} id={brewE[1]} onChange={handleChange} />
+                            <Field type="checkbox" name="checked" value={`{"state": "${element[0]}","brewery": "${brewE[1]}"}`} id={brewE[1]} onChange={handleChange} />
                         </th>
                         <td>
                             <label htmlFor={brewE[1]} title={`#${tableIndex}`}>{++tableIndex}</label>
@@ -77,10 +73,10 @@ function BrewTable() {
     return (
         <div className="BrewTable">
             <Formik initialValues={{ checked: [] }}>
-                {({ values, handleChange, handleReset }) => (
+                {({ values, handleChange, handleReset, resetForm }) => (
                     <>
                         <BrewTableButton
-                            values={values} handleReset={handleReset} brewRef={brewRef}
+                            values={values} resetForm={resetForm}
                             mainObj={mainObj} setMainObj={setMainObj}
                         />
                         <Form>

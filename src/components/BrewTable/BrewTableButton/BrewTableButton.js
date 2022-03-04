@@ -34,20 +34,12 @@ function BrewTableButton(props) {
         //placing "alert" in a timeout, so the user can see the change, while the alert is showing 
         setTimeout(() => { alert("Breweries deleted successfully") }, 0)
         props.setMainObj(mainObj)
-        props.handleReset()
+        props.resetForm()
     }
 
     const valuesToJson = () => {
         const jsonValues = []
         return props.values.checked.map((element, index) => jsonValues[index] = JSON.parse(element))
-    }
-
-    const resetSelection = () => {
-        for (let ref of props.brewRef.current) {
-            if (ref.current)
-                ref.current.checked = false
-        }
-        props.handleReset()
     }
 
     return (
@@ -67,14 +59,14 @@ function BrewTableButton(props) {
                 <Route path={'/brew-table/create'} exact>
                     <CreateBrew
                         mainObj={props.mainObj} setMainObj={props.setMainObj}
-                        resetSelection={resetSelection}
+                        resetForm={props.resetForm}
 
                     />
                 </Route>
                 <Route path={'/brew-table/update'} exact>
                     <UpdateBrew
                         mainObj={props.mainObj} setMainObj={props.setMainObj}
-                        resetSelection={resetSelection} values={valuesToJson()}
+                        resetForm={props.resetForm} values={valuesToJson()}
                     />
                 </Route>
                 <Route>

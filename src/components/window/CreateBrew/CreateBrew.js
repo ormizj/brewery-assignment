@@ -26,7 +26,7 @@ function CreateBrew(props) {
         setTimeout(() => { alert("Brewery created successfully") }, (0))
         history.push('/brew-table')
         props.setMainObj(mainObj)
-        props.resetSelection()
+        props.resetForm()
     }
 
     return (
