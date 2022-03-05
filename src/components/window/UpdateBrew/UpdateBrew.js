@@ -15,11 +15,8 @@ function UpdateBrew(props) {
     let state, city, street, brewery
 
     //going back in-case of missing value (usually caused by refresh)
-    if (_.isEmpty(props.values)) {
-        history.push('/brew-table')
-    } else {
-        ({ state, city, street, brewery } = findBrew(props.mainObj, props.values[0]))
-    }
+    if (_.isEmpty(props.values)) history.push('/brew-table')
+    else ({ state, city, street, brewery } = findBrew(props.mainObj, props.values[0]))
 
     const handleSubmit = (values) => {
         const mainObj = props.mainObj
@@ -28,13 +25,11 @@ function UpdateBrew(props) {
         values = formatObjInput(values)
 
         //checking if brewery exists, if changed by user, and sends back an alert
-        if (values.brewery !== brewery && isBrewExist(mainObj, values)) {
+        if (values.brewery !== brewery && isBrewExist(mainObj, values))
             return alert(`A Brewery with the name "${values.brewery}" already exists, try a different name`)
-        }
 
-        //deleting old brewery
+        //deleting old brewery and inserting new one
         objDelete(mainObj, { state, brewery })
-        //inserting brewery
         objInsert(mainObj, values)
 
         //setting mainObj and redirecting user back to the brew table

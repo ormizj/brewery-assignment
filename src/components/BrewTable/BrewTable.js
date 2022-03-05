@@ -6,6 +6,7 @@ import { Form, Formik } from 'formik'
 import BrewTableButton from "./BrewTableButton/BrewTableButton";
 import { objToArr } from "../../objects/arrObj";
 import { Field } from "formik";
+import _ from "lodash";
 
 //TODO documentation for this file
 
@@ -33,7 +34,7 @@ function BrewTable() {
 
     const renderTable = (handleChange) => {
         //stopping the function, if the "mainObj" has yet to be initialized
-        if (mainObj.states['']) return
+        if (_.isEmpty(mainObj.states)) return
         const arrObj = objToArr(mainObj)
         let tableIndex = 0
 
@@ -69,7 +70,7 @@ function BrewTable() {
     return (
         <div className="BrewTable">
             <Formik initialValues={{ checked: [] }}>
-                {({ values, handleChange, handleReset, resetForm }) => (
+                {({ values, handleChange, resetForm }) => (
                     <>
                         <BrewTableButton
                             values={values} resetForm={resetForm}
