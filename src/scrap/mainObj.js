@@ -1,7 +1,7 @@
+/* this file contains all previous functions i have used, but scrapped from the project */
 
-/**
-* function to instintiate "mainObj" directly with data
-*/
+//#1
+/* function to instintiate "mainObj" directly with data */
 // if (!tempObj.states[data.state]) {
 //     tempObj.states[data.state] = {
 //         stateName: data.state,
@@ -17,23 +17,4 @@
 //         "city": data.city,
 //         "street": data.street
 //     }
-// }
-
-/**
- * old function to instantiate the "mainObj"
- */
-// if (!mainObj.states[values.state]) {
-//     mainObj.states[values.state] = {
-//         stateName: values.state,
-//         breweries: {
-//             [values.brewery]: {
-//                 city: values.city,
-//                 street: values.street
-//             }
-//         }
-//     }
-// }
-// mainObj.states[values.state].breweries[values.brewery] = {
-//     city: values.city,
-//     street: values.street
 // }
