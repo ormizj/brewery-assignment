@@ -16,7 +16,8 @@ function CreateBrew(props) {
         values = formatObjInput(values)
 
         //return alert if brewery already exists
-        if (isBrewExist(mainObj, values)) return alert(`A Brewery with the name "${values.brewery}" already exists, try a different name`)
+        if (isBrewExist(mainObj, values))
+            return alert(`A Brewery with the name "${values.brewery}" already exists, try a different name`)
 
         //inserting brewery
         objInsert(mainObj, values)
