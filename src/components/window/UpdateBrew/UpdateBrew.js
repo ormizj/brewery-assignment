@@ -15,7 +15,7 @@ import './update-brew.css'
  */
 function UpdateBrew(props) {
 
-    //variables to hold the old attributes of the brew
+    //variables to hold the attributes of the old brewery
     let state, city, street, brewery
 
     //redirect back in-case of missing value (usually caused by refresh)
@@ -53,7 +53,7 @@ function UpdateBrew(props) {
     /**
      * Complexity- Time: O(1); Space: O(1);
      * 
-     * @returns {JSX.Element} table body containing the elements to update a brewery.
+     * @returns {JSX.Element} table containing the elements to update a brewery.
      */
     const renderTable = () =>
         <>
