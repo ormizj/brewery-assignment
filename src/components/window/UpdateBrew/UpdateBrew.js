@@ -50,6 +50,11 @@ function UpdateBrew(props) {
         props.resetForm()
     }
 
+    /**
+     * Complexity- Time: O(1); Space: O(1);
+     * 
+     * @returns {JSX.Element} table body containing the elements to update a brewery.
+     */
     const renderTable = () =>
         <>
             <Formik

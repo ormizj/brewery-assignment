@@ -28,7 +28,7 @@ export const mainObjTemplate = () => {
 /**
  * @returns {JSON} the base object needed for inserting breweries.
  */
-const getMainObj = () => { return { states: {} } }
+const createMainObj = () => { return { states: {} } }
 
 /**
  * Complexity- Time: O(1); Space: O(1);
@@ -146,4 +146,4 @@ const brewValueToWord = (brew) => {
     brew.street = returnWord(brew.street)
 }
 
-export default getMainObj
+export default createMainObj

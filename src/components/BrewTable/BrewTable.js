@@ -1,7 +1,7 @@
 import "./brew-table.css";
 import { useState, useEffect } from 'react'
 import { getBreweries } from '../../api/brewery.js'
-import getMainObj, { objInsertBrew } from "../../objects/mainObj";
+import createMainObj, { objInsertBrew } from "../../objects/mainObj";
 import { Form, Formik } from 'formik'
 import BrewTableButton from "./BrewTableButton/BrewTableButton";
 import { objToArr, sortArrObj } from "../../objects/arrObj";
@@ -10,8 +10,6 @@ import _ from "lodash";
 
 /**
  * component used to render the brewery table.
- * 
- * @param {JSON} props 
  */
 function BrewTable() {
 
@@ -28,7 +26,7 @@ function BrewTable() {
             if (!response.data) throw response;
 
             //instantiating "mainObj"
-            const tempObj = getMainObj()
+            const tempObj = createMainObj()
             for (let { state, city, street, id: brewery } of response.data) {
                 objInsertBrew(tempObj, { state, city, street, brewery })
             }
@@ -41,9 +39,11 @@ function BrewTable() {
     }, [])
 
     /**
-     * @returns table render that represents an empty table
+     * Complexity- Time: O(1); Space: O(1);
+     * 
+     * @returns {JSX.Element} table render that contains text instead of breweries.
      */
-    const emptyTable = (() =>
+    const renderEmptyTable = (() =>
         <tr>
             <td></td><td></td><td></td><td></td>
             <td><label className="BrewTable-empty">Brewery Table Is Currently Empty</label></td>
@@ -51,11 +51,16 @@ function BrewTable() {
         </tr>
     )
 
-    const renderTable = () => {
+    /**
+     * Complexity- Time: O(n log n); Space: O(n);
+     * 
+     * @returns {JSX.Element} table body containing the "mainObj" breweries.
+     */
+    const renderTableBody = () => {
         //return, if "mainObj" has yet to be initialized
         if (_.isEmpty(mainObj)) return
         //return empty table, if there are no breweries in "mainObj"
-        if (_.isEmpty(mainObj.states)) return emptyTable()
+        if (_.isEmpty(mainObj.states)) return renderEmptyTable()
 
         //converting "mainObj" to an Array, and sorting it
         const arrObj = objToArr(mainObj)
@@ -113,7 +118,7 @@ function BrewTable() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {renderTable()}
+                                    {renderTableBody()}
                                 </tbody>
                             </table>
                         </Form>

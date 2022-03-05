@@ -7,9 +7,9 @@ import _ from "lodash"
  */
 export const arrObjTemplate = () => {
 
-    const arrObjTemplate = ['i'][['state', {
+    const arrObjTemplate = [0][['state', {
         stateName: 'state',
-        breweries: ['i'][['city', 'breweryId', 'street']]
+        breweries: [0][['city', 'breweryId', 'street']]
     }]]
 
     return arrObjTemplate
