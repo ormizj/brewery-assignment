@@ -5,10 +5,20 @@ import history from '../../history'
 import './../window.css'
 import './create-brew.css'
 
-//TODO documentation for this file
-
+/**
+ * window-type component, used to create a new brewery.
+ * 
+ * @param {JSON} props 
+ */
 function CreateBrew(props) {
 
+    /**
+     * Complexity- Time: O(1); Space: O(1);
+     * 
+     * creates a new brewery and inserts it into "mainObj".
+     * 
+     * @param {JSON} values of the new brewery.
+     */
     const handleSubmit = (values) => {
         const mainObj = props.mainObj
 

@@ -1,7 +1,5 @@
 import _ from "lodash"
 
-//TODO documentation for this file
-
 /**
  * function created to represent the structure of "arrObj".
  * 

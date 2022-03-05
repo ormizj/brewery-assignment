@@ -8,13 +8,21 @@ import { objToArr, sortArrObj } from "../../objects/arrObj";
 import { Field } from "formik";
 import _ from "lodash";
 
-//TODO documentation for this file
-
+/**
+ * component used to render the brewery table.
+ * 
+ * @param {JSON} props 
+ */
 function BrewTable() {
 
     //creating "mainObj" state
     const [mainObj, setMainObj] = useState()
 
+    /**
+     * Complexity- Time: O(n); Space: O(n);
+     * 
+     * instantiates the "mainObj" from the "Open Brewery DB"
+     */
     useEffect(() => {
         getBreweries().then(response => {
             if (!response.data) throw response;
@@ -35,9 +43,11 @@ function BrewTable() {
     const renderTable = () => {
         //stopping function, if "mainObj" contains no breweries
         if (_.isEmpty(mainObj) || _.isEmpty(mainObj.states)) return
+        let tableIndex = 0
+
+        //converting "mainObj" to an Array, and sorting it
         const arrObj = objToArr(mainObj)
         sortArrObj(arrObj)
-        let tableIndex = 0
 
         //rendering table
         return (arrObj.map((element) => {

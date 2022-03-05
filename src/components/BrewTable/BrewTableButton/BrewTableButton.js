@@ -6,10 +6,19 @@ import UpdateBrew from '../../window/UpdateBrew/UpdateBrew'
 import _ from 'lodash'
 import { objDeleteBrew } from '../../../objects/mainObj'
 
-//TODO documentation for this file
-
+/**
+ * component used to handle the buttons for the brewery table.
+ * 
+ * @param {JSON} props
+ */
 function BrewTableButton(props) {
 
+    /**
+     * Complexity: Time- O(1); Space- O(1);
+     * 
+     * redirects the user to the "UpdateBrew" window to update the user selected brewery,
+     * ensures that the user selected exactly 1 brewery.
+     */
     const handleUpdateBrew = () => {
         //ensuring user selected exactly 1 brewery
         if (_.isEmpty(props.values.checked))
@@ -19,11 +28,15 @@ function BrewTableButton(props) {
         history.push('/brew-table/update')
     }
 
+    /**
+     * Complexity: Time- O(n); Space- O(n); [n= user selected breweries]
+     * 
+     * deletes the breweries selected by the user,
+     * ensures that the user selected atleast 1 brewery.
+     */
     const handleDeleteBrew = () => {
         const values = valuesToJson()
         let mainObj = props.mainObj
-
-        console.log()
 
         //ensuring user selected at least 1 brewery, and confirming user choice
         if (_.isEmpty(values))

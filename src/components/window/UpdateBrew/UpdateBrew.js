@@ -8,16 +8,27 @@ import history from '../../history'
 import './../window.css'
 import './update-brew.css'
 
-//TODO documentation for this file
-
+/**
+ * window-type component, used to update an existing brewery.
+ * 
+ * @param {JSON} props 
+ */
 function UpdateBrew(props) {
 
+    //variables to hold the old attributes of the brew
     let state, city, street, brewery
 
     //redirect back in-case of missing value (usually caused by refresh)
     if (_.isEmpty(props.values)) history.push('/brew-table')
     else ({ state, city, street, brewery } = objFindBrew(props.mainObj, props.values[0]))
 
+    /**
+     * Complexity- Time: O(1); Space: O(1);
+     * 
+     * updates an existing "mainObj"- brewery.
+     * 
+     * @param {JSON} values of the brewery new values.
+     */
     const handleSubmit = (values) => {
         const mainObj = props.mainObj
 
