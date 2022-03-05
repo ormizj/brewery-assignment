@@ -3,7 +3,7 @@ import _ from "lodash"
 //TODO documentation for this file
 
 /**
- * Complexity: Time - O(n log n); Space - O(n)
+ * Complexity- Time: O(n log n); Space: O(n)
  * 
  * @param {JSON} mainObj
  * @returns {Array} "mainObj" as an Array

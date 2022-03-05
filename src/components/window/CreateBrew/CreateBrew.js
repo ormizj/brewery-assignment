@@ -13,7 +13,7 @@ function CreateBrew(props) {
         const mainObj = props.mainObj
 
         //formatting values
-        values = formatObjInput(values)
+        formatObjInput(values)
 
         //return alert if brewery already exists
         if (isBrewExist(mainObj, values))

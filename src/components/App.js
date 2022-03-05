@@ -3,8 +3,6 @@ import BrewTable from './BrewTable/BrewTable'
 import history from './history';
 import { Router } from 'react-router-dom'
 
-//TODO documentation for this file
-
 function App() {
 
   //redirection to homepage

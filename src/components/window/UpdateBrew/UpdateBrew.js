@@ -22,7 +22,7 @@ function UpdateBrew(props) {
         const mainObj = props.mainObj
 
         //formatting values
-        values = formatObjInput(values)
+        formatObjInput(values)
 
         //checking if brewery exists & if changed by user, and returns an alert
         if (values.brewery !== brewery && isBrewExist(mainObj, values))

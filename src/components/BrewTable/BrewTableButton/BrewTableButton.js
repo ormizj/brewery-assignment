@@ -11,7 +11,7 @@ import { objDelete } from '../../../objects/mainObj'
 function BrewTableButton(props) {
 
     const handleUpdateBrew = () => {
-        //ensuring that the user selected exactly 1 brewery
+        //ensuring user selected exactly 1 brewery
         if (_.isEmpty(props.values.checked))
             return alert("You need to select a Brewery to update")
         if (props.values.checked.length > 1)
@@ -23,9 +23,12 @@ function BrewTableButton(props) {
         const values = valuesToJson()
         let mainObj = props.mainObj
 
-        //ensuring user selected at least 1 brewery
+        console.log()
+
+        //ensuring user selected at least 1 brewery, and confirming user choice
         if (_.isEmpty(values))
             return alert("You need to select at least one Brewery to delete")
+        if (!window.confirm('Are you sure you want to delete selected Breweries?')) return
 
         //deleting brewery from "mainObj" (and states if they are empty)
         for (let value of values)
@@ -38,7 +41,7 @@ function BrewTableButton(props) {
     }
 
     /**
-     * Complexity: Time- O(n); Space- O(n) [n = selected breweries]
+     * Complexity: Time- O(n); Space- O(n); [n= user selected breweries]
      * 
      * @returns {Array} selected breweries as JSON inside an Array
      */
