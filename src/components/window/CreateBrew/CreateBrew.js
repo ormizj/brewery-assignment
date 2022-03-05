@@ -1,5 +1,5 @@
 import { Field, Form, Formik } from 'formik'
-import { formatObjInput, objInsert, isBrewExist } from '../../../objects/mainObj'
+import { formatObjBrew, objInsertBrew, isBrewExist } from '../../../objects/mainObj'
 import { closeDiv } from '../../../utils/windowUtil'
 import history from '../../history'
 import './../window.css'
@@ -13,14 +13,14 @@ function CreateBrew(props) {
         const mainObj = props.mainObj
 
         //formatting values
-        formatObjInput(values)
+        formatObjBrew(values)
 
         //return alert if brewery already exists
         if (isBrewExist(mainObj, values))
             return alert(`A Brewery with the name "${values.brewery}" already exists, try a different name`)
 
         //inserting brewery
-        objInsert(mainObj, values)
+        objInsertBrew(mainObj, values)
 
         //setting "mainObj" and redirecting user back to the brew table
         setTimeout(() => { alert("Brewery created successfully") }, (0))

@@ -1,32 +1,34 @@
 import _ from "lodash"
 import { returnWord } from "../utils/stringUtil"
 
-//TODO documentation for this file
-
 /**
  * function created to represent the structure of "mainObj".
  * 
- * @returns {JSON} JSON object with the key "states" without values.
+ * @returns {JSON}
  */
-const mainObjTemplate = () => {
+export const mainObjTemplate = () => {
 
-    const objTemplate = {
+    const mainObjTemplate = {
         states: {
-            '': {
-                stateName: '',
+            'state': {
+                stateName: 'state',
                 breweries: {
-                    '': {
-                        city: '',
-                        street: ''
+                    'breweryId': {
+                        city: 'city',
+                        street: 'street'
                     }
                 }
             }
         }
     }
 
-    delete objTemplate.states['']
-    return objTemplate
+    return mainObjTemplate
 }
+
+/**
+ * @returns {JSON} the base object needed for inserting breweries.
+ */
+const getMainObj = () => { return { states: {} } }
 
 /**
  * Complexity- Time: O(1); Space: O(1);
@@ -36,9 +38,13 @@ const mainObjTemplate = () => {
  * @param {JSON} mainObj
  * @param {JSON} Object containing required values to create a brewery.
  */
-export const objInsert = (mainObj, brew) => {
-    objValueToWord(brew)
+export const objInsertBrew = (mainObj, brew) => {
+    brewValueToWord(brew)
     const { state, brewery, city, street } = brew
+
+    //creating states key, if missing
+    if (!mainObj.states)
+        mainObj.states = {}
 
     //creating the state "key", if it doesn't exist
     if (!mainObj.states[state]) {
@@ -62,7 +68,7 @@ export const objInsert = (mainObj, brew) => {
  * @param {JSON} mainObj
  * @param {JSON} Object containing a brewery and its state.
  */
-export const objDelete = (mainObj, { state, brewery }) => {
+export const objDeleteBrew = (mainObj, { state, brewery }) => {
     //if state doesn't exists, return
     if (!mainObj.states[state]) return
 
@@ -75,12 +81,12 @@ export const objDelete = (mainObj, { state, brewery }) => {
  * Complexity- Time: O(1); Space: O(1);
  * 
  * capitalizes the first char of every word in the param Object Strings,
- * for the brewery String, only replaces " " with a "-".
+ * for the brewery String, only replaces " " with "-".
  * 
  * @param {Object} Object containing required values to create a brewery.
  */
-export const formatObjInput = (brew) => {
-    objValueToWord(brew)
+export const formatObjBrew = (brew) => {
+    brewValueToWord(brew)
 
     brew.state = _.startCase(_.toLower(brew.state))
     brew.city = _.startCase(_.toLower(brew.city))
@@ -113,7 +119,7 @@ export const isBrewExist = (mainObj, { brewery }) => {
  * @returns {Object} a brewery containing complete information.
  *                   undefined if no brewery was found.
  */
-export const findBrew = (mainObj, { state, brewery }) => {
+export const objFindBrew = (mainObj, { state, brewery }) => {
     const brew = { state, brewery }
 
     //if state doesn't exists, return
@@ -130,14 +136,14 @@ export const findBrew = (mainObj, { state, brewery }) => {
 /**
  * Complexity- Time: O(1); Space: O(1);
  * 
- * changes the param brew Strings to actual words.
+ * changes the param brew Strings, to actual words.
  * 
  * @param {JSON} brew
  */
-const objValueToWord = (brew) => {
+const brewValueToWord = (brew) => {
     brew.state = returnWord(brew.state)
     brew.city = returnWord(brew.city)
     brew.street = returnWord(brew.street)
 }
 
-export default mainObjTemplate
+export default getMainObj

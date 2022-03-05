@@ -1,10 +1,10 @@
 import "./brew-table.css";
 import { useState, useEffect } from 'react'
 import { getBreweries } from '../../api/brewery.js'
-import mainObjTemplate, { objInsert } from "../../objects/mainObj";
+import getMainObj, { objInsertBrew } from "../../objects/mainObj";
 import { Form, Formik } from 'formik'
 import BrewTableButton from "./BrewTableButton/BrewTableButton";
-import { objToArr } from "../../objects/arrObj";
+import { objToArr, sortArrObj } from "../../objects/arrObj";
 import { Field } from "formik";
 import _ from "lodash";
 
@@ -13,16 +13,16 @@ import _ from "lodash";
 function BrewTable() {
 
     //creating "mainObj" state
-    const [mainObj, setMainObj] = useState(mainObjTemplate())
+    const [mainObj, setMainObj] = useState()
 
     useEffect(() => {
         getBreweries().then(response => {
             if (!response.data) throw response;
 
             //instantiating "mainObj"
-            const tempObj = mainObjTemplate()
+            const tempObj = getMainObj()
             for (let { state, city, street, id: brewery } of response.data) {
-                objInsert(tempObj, { state, city, street, brewery })
+                objInsertBrew(tempObj, { state, city, street, brewery })
             }
             setMainObj(tempObj)
 
@@ -33,9 +33,10 @@ function BrewTable() {
     }, [])
 
     const renderTable = () => {
-        //stopping function, if "mainObj" has yet to be initialized
-        if (_.isEmpty(mainObj.states)) return
+        //stopping function, if "mainObj" contains no breweries
+        if (_.isEmpty(mainObj) || _.isEmpty(mainObj.states)) return
         const arrObj = objToArr(mainObj)
+        sortArrObj(arrObj)
         let tableIndex = 0
 
         //rendering table

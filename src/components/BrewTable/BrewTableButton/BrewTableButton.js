@@ -4,7 +4,7 @@ import history from '../../history'
 import CreateBrew from '../../window/CreateBrew/CreateBrew'
 import UpdateBrew from '../../window/UpdateBrew/UpdateBrew'
 import _ from 'lodash'
-import { objDelete } from '../../../objects/mainObj'
+import { objDeleteBrew } from '../../../objects/mainObj'
 
 //TODO documentation for this file
 
@@ -32,7 +32,7 @@ function BrewTableButton(props) {
 
         //deleting brewery from "mainObj" (and states if they are empty)
         for (let value of values)
-            objDelete(mainObj, value)
+            objDeleteBrew(mainObj, value)
 
         //placing "alert" in a timeout, so the user can see the change, while the alert is showing 
         setTimeout(() => { alert("Breweries deleted successfully") }, 0)

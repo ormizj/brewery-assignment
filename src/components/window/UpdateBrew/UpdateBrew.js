@@ -2,7 +2,7 @@ import { Form } from 'formik'
 import { Field } from 'formik'
 import { Formik } from 'formik'
 import _ from 'lodash'
-import { findBrew, formatObjInput, objInsert, isBrewExist, objDelete } from '../../../objects/mainObj'
+import { objFindBrew, formatObjBrew, objInsertBrew, isBrewExist, objDeleteBrew } from '../../../objects/mainObj'
 import { closeDiv } from '../../../utils/windowUtil'
 import history from '../../history'
 import './../window.css'
@@ -16,21 +16,21 @@ function UpdateBrew(props) {
 
     //redirect back in-case of missing value (usually caused by refresh)
     if (_.isEmpty(props.values)) history.push('/brew-table')
-    else ({ state, city, street, brewery } = findBrew(props.mainObj, props.values[0]))
+    else ({ state, city, street, brewery } = objFindBrew(props.mainObj, props.values[0]))
 
     const handleSubmit = (values) => {
         const mainObj = props.mainObj
 
         //formatting values
-        formatObjInput(values)
+        formatObjBrew(values)
 
         //checking if brewery exists & if changed by user, and returns an alert
         if (values.brewery !== brewery && isBrewExist(mainObj, values))
             return alert(`A Brewery with the name "${values.brewery}" already exists, try a different name`)
 
         //deleting old brewery and inserting new one
-        objDelete(mainObj, { state, brewery })
-        objInsert(mainObj, values)
+        objDeleteBrew(mainObj, { state, brewery })
+        objInsertBrew(mainObj, values)
 
         //setting "mainObj" and redirecting user back to the brew table
         setTimeout(() => { alert("Brewery updated successfully") }, (0))
