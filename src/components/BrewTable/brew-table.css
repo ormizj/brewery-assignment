@@ -36,3 +36,8 @@
     cursor: pointer;
     width: 100%;
 }
+
+.BrewTable-empty{
+    font-weight: bold;
+    cursor: text !important;
+}

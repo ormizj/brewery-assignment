@@ -40,14 +40,27 @@ function BrewTable() {
         })
     }, [])
 
+    /**
+     * @returns {ReactHTML} table render that represents an empty table
+     */
+    const emptyTable = (() =>
+        <tr>
+            <td></td><td></td><td></td><td></td>
+            <td><label className="BrewTable-empty">Brewery Table Is Currently Empty</label></td>
+            <td></td>
+        </tr>
+    )
+
     const renderTable = () => {
-        //stopping function, if "mainObj" contains no breweries
-        if (_.isEmpty(mainObj) || _.isEmpty(mainObj.states)) return
-        let tableIndex = 0
+        //return, if "mainObj" has yet to be initialized
+        if (_.isEmpty(mainObj)) return
+        //return empty table, if there are no breweries in "mainObj"
+        if (_.isEmpty(mainObj.states)) return emptyTable()
 
         //converting "mainObj" to an Array, and sorting it
         const arrObj = objToArr(mainObj)
         sortArrObj(arrObj)
+        let tableIndex = 0
 
         //rendering table
         return (arrObj.map((element) => {

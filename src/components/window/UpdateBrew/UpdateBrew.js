@@ -50,115 +50,112 @@ function UpdateBrew(props) {
         props.resetForm()
     }
 
-    const renderTable = () => {
-        return (
-            <>
-                <Formik
-                    initialValues={{ state, city, street, brewery }}
-                    onSubmit={handleSubmit}
-                >
-                    {({ values, dirty }) => (
-                        <Form>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <th width="50%" title='From:'>From:</th>
-                                        <th width="50%" title='To:'>To:</th>
-                                    </tr>
-                                    <tr>
-                                        {/* ------------------------------From:------------------------------ */}
-                                        <td className='UpdateBrew-from'>
-                                            <div className="input-group">
-                                                <input
-                                                    value={state}
-                                                    title={state}
-                                                    className='form-control'
-                                                    placeholder='State'
-                                                    disabled={true}
-                                                />
-                                                <div className="input-group-text" id='UpdatedBrew-state-div' title='State'>State</div>
-                                            </div>
-                                            <div className="input-group">
-                                                <input
-                                                    value={city}
-                                                    title={city}
-                                                    className='form-control'
-                                                    placeholder='City'
-                                                    disabled={true}
-                                                />
-                                                <div className="input-group-text" id='UpdatedBrew-city-div' title='City'>City</div>
-                                            </div>
-                                            <div className="input-group">
-                                                <input
-                                                    value={street}
-                                                    title={street}
-                                                    className='form-control'
-                                                    placeholder='Street'
-                                                    disabled={true}
-                                                />
-                                                <div className="input-group-text" id='UpdatedBrew-street-div' title='Street'>Street</div>
-                                            </div>
-                                            <div className="input-group">
-                                                <input
-                                                    value={brewery}
-                                                    title={brewery}
-                                                    className='form-control'
-                                                    placeholder='Brewery'
-                                                    disabled={true}
-                                                />
-                                                <div className="input-group-text" title='Brewery'>Brewery</div>
-                                            </div>
-                                        </td>
-                                        {/* ------------------------------To:------------------------------ */}
-                                        <td className='UpdateBrew-to'>
-                                            <div className="input-group">
-                                                <Field
-                                                    title={values.state}
-                                                    name='state'
-                                                    className='form-control'
-                                                    placeholder='State'
-                                                />
-                                            </div>
-                                            <div className="input-group">
-                                                <Field
-                                                    title={values.city}
-                                                    name='city'
-                                                    className='form-control'
-                                                    placeholder='City'
-                                                />
-                                            </div>
-                                            <div className="input-group">
-                                                <Field
-                                                    title={values.street}
-                                                    name='street'
-                                                    className='form-control'
-                                                    placeholder='Street'
-                                                />
-                                            </div>
-                                            <div className="input-group">
-                                                <Field
-                                                    title={values.brewery}
-                                                    name='brewery'
-                                                    className='form-control'
-                                                    placeholder='Brewery'
-                                                    required={true}
-                                                />
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div className='window-submit'>
-                                <button type='submit' className='btn btn-info' title='Update Brewery' disabled={!dirty}>
-                                    Update Brewery
-                                </button>
-                            </div>
-                        </Form>
-                    )}
-                </Formik >
-            </>
-        )
-    }
+    const renderTable = () =>
+        <>
+            <Formik
+                initialValues={{ state, city, street, brewery }}
+                onSubmit={handleSubmit}
+            >
+                {({ values, dirty }) => (
+                    <Form>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <th width="50%" title='From:'>From:</th>
+                                    <th width="50%" title='To:'>To:</th>
+                                </tr>
+                                <tr>
+                                    {/* ------------------------------From:------------------------------ */}
+                                    <td className='UpdateBrew-from'>
+                                        <div className="input-group">
+                                            <input
+                                                value={state}
+                                                title={state}
+                                                className='form-control'
+                                                placeholder='State'
+                                                disabled={true}
+                                            />
+                                            <div className="input-group-text" id='UpdatedBrew-state-div' title='State'>State</div>
+                                        </div>
+                                        <div className="input-group">
+                                            <input
+                                                value={city}
+                                                title={city}
+                                                className='form-control'
+                                                placeholder='City'
+                                                disabled={true}
+                                            />
+                                            <div className="input-group-text" id='UpdatedBrew-city-div' title='City'>City</div>
+                                        </div>
+                                        <div className="input-group">
+                                            <input
+                                                value={street}
+                                                title={street}
+                                                className='form-control'
+                                                placeholder='Street'
+                                                disabled={true}
+                                            />
+                                            <div className="input-group-text" id='UpdatedBrew-street-div' title='Street'>Street</div>
+                                        </div>
+                                        <div className="input-group">
+                                            <input
+                                                value={brewery}
+                                                title={brewery}
+                                                className='form-control'
+                                                placeholder='Brewery'
+                                                disabled={true}
+                                            />
+                                            <div className="input-group-text" title='Brewery'>Brewery</div>
+                                        </div>
+                                    </td>
+                                    {/* ------------------------------To:------------------------------ */}
+                                    <td className='UpdateBrew-to'>
+                                        <div className="input-group">
+                                            <Field
+                                                title={values.state}
+                                                name='state'
+                                                className='form-control'
+                                                placeholder='State'
+                                            />
+                                        </div>
+                                        <div className="input-group">
+                                            <Field
+                                                title={values.city}
+                                                name='city'
+                                                className='form-control'
+                                                placeholder='City'
+                                            />
+                                        </div>
+                                        <div className="input-group">
+                                            <Field
+                                                title={values.street}
+                                                name='street'
+                                                className='form-control'
+                                                placeholder='Street'
+                                            />
+                                        </div>
+                                        <div className="input-group">
+                                            <Field
+                                                title={values.brewery}
+                                                name='brewery'
+                                                className='form-control'
+                                                placeholder='Brewery'
+                                                required={true}
+                                            />
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div className='window-submit'>
+                            <button type='submit' className='btn btn-info' title='Update Brewery' disabled={!dirty}>
+                                Update Brewery
+                            </button>
+                        </div>
+                    </Form>
+                )}
+            </Formik >
+        </>
 
     return (
         <>
