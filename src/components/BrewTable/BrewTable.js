@@ -41,7 +41,7 @@ function BrewTable() {
     }, [])
 
     /**
-     * @returns {ReactHTML} table render that represents an empty table
+     * @returns table render that represents an empty table
      */
     const emptyTable = (() =>
         <tr>
