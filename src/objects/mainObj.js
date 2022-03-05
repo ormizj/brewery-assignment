@@ -66,9 +66,7 @@ export const formatObjInput = ({ state, city, street, brewery }) => {
 }
 
 export const isBrewExist = (mainObj, { brewery }) => {
-    const states = Object.values(mainObj.states)
-
-    for (let state of states) {
+    for (let state of Object.values(mainObj.states)) {
         if (state.breweries[brewery])
             return true
     }
