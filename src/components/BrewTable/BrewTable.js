@@ -33,12 +33,12 @@ function BrewTable() {
     }, [])
 
     const renderTable = () => {
-        //stopping the function, if the "mainObj" has yet to be initialized
+        //stopping function, if "mainObj" has yet to be initialized
         if (_.isEmpty(mainObj.states)) return
         const arrObj = objToArr(mainObj)
         let tableIndex = 0
 
-        //rendering the table
+        //rendering table
         return (arrObj.map((element) => {
             return (element[1].breweries.map((brewE) => {
                 return (

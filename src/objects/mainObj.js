@@ -39,7 +39,7 @@ export const objInsert = (mainObj, { state, brewery, city, street }) => {
         }
     }
 
-    //creating the brewery and returning them
+    //creating the brewery and returning it
     mainObj.states[state].breweries[brewery] = { city, street }
 
     return mainObj

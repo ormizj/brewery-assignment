@@ -22,7 +22,7 @@ function CreateBrew(props) {
         //inserting brewery
         objInsert(mainObj, values)
 
-        //setting mainObj and redirecting user back to the brew table
+        //setting "mainObj" and redirecting user back to the brew table
         setTimeout(() => { alert("Brewery created successfully") }, (0))
         history.push('/brew-table')
         props.setMainObj(mainObj)

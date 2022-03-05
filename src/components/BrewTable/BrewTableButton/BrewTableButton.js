@@ -23,7 +23,7 @@ function BrewTableButton(props) {
         const values = valuesToJson()
         let mainObj = props.mainObj
 
-        //ensuring the user selected at least 1 brewery
+        //ensuring user selected at least 1 brewery
         if (_.isEmpty(values))
             return alert("You need to select at least one Brewery to delete")
 
@@ -65,7 +65,6 @@ function BrewTableButton(props) {
                     <CreateBrew
                         mainObj={props.mainObj} setMainObj={props.setMainObj}
                         resetForm={props.resetForm}
-
                     />
                 </Route>
                 <Route path={'/brew-table/update'} exact>
