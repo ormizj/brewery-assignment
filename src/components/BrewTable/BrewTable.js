@@ -32,7 +32,7 @@ function BrewTable() {
         })
     }, [])
 
-    const renderTable = (handleChange) => {
+    const renderTable = () => {
         //stopping the function, if the "mainObj" has yet to be initialized
         if (_.isEmpty(mainObj.states)) return
         const arrObj = objToArr(mainObj)
@@ -44,7 +44,7 @@ function BrewTable() {
                 return (
                     <tr key={brewE[2]}>
                         <th className="BrewTable-checkbox">
-                            <Field type="checkbox" name="checked" value={`{"state": "${element[0]}","brewery": "${brewE[1]}"}`} id={brewE[1]} onChange={handleChange} />
+                            <Field type="checkbox" name="checked" value={`{"state": "${element[0]}","brewery": "${brewE[1]}"}`} id={brewE[1]} />
                         </th>
                         <td>
                             <label htmlFor={brewE[1]} title={`#${tableIndex}`}>{++tableIndex}</label>
@@ -70,7 +70,7 @@ function BrewTable() {
     return (
         <div className="BrewTable">
             <Formik initialValues={{ checked: [] }}>
-                {({ values, handleChange, resetForm }) => (
+                {({ values, resetForm }) => (
                     <>
                         <BrewTableButton
                             values={values} resetForm={resetForm}
@@ -89,7 +89,7 @@ function BrewTable() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {renderTable(handleChange)}
+                                    {renderTable()}
                                 </tbody>
                             </table>
                         </Form>
