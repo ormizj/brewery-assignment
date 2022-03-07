@@ -19,7 +19,7 @@ function BrewTable() {
     /**
      * Complexity- Time: O(n); Space: O(n);
      * 
-     * instantiates the "mainObj" from the "Open Brewery DB"
+     * instantiates the "mainObj" from the "Open Brewery DB" api
      */
     useEffect(() => {
         getBreweries().then(response => {

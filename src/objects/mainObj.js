@@ -42,10 +42,6 @@ export const objInsertBrew = (mainObj, brew) => {
     brewValueToWord(brew)
     const { state, brewery, city, street } = brew
 
-    //creating states key, if missing
-    if (!mainObj.states)
-        mainObj.states = {}
-
     //creating the state "key", if it doesn't exist
     if (!mainObj.states[state]) {
         mainObj.states[state] = {
