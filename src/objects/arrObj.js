@@ -44,10 +44,10 @@ export const arrObjTemplate = () => {
 
 export const objToArr = (mainObj) => {
     const arrObj = []
-    const states = Object.keys(mainObj.states)
 
     //creating "arrObj" from "mainObj"
-    for (let state of states) {
+    for (let state of Object.keys(mainObj.states)) {
+
         //instantiating "arrObj" states
         arrObj.push([state])
         arrObj[arrObj.length - 1][1] = {
