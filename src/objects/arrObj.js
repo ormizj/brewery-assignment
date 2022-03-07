@@ -43,27 +43,29 @@ export const arrObjTemplate = () => {
 // }
 
 export const objToArr = (mainObj) => {
-    //cloning "Obj" to remove aliasing 
     const arrObj = []
     const states = Object.keys(mainObj.states)
 
+    //creating "arrObj" from "mainObj"
     for (let state of states) {
+        //instantiating "arrObj" states
         arrObj.push([state])
         arrObj[arrObj.length - 1][1] = {
             stateName: state,
             breweries: []
         }
 
-        Object.entries(mainObj.states[state].breweries).forEach((brewery, index) => {
-            arrObj[arrObj.length - 1][1].breweries[index] = [brewery[1].city]
-            arrObj[arrObj.length - 1][1].breweries[index][brewery[0]] = mainObj.states[state].breweries[brewery[0]]
+        //instantiating "arrObj" breweries
+        Object.entries(mainObj.states[state].breweries).forEach((brew, index) => {
+            arrObj[arrObj.length - 1][1].breweries[index] = [brew[1].city]
+            arrObj[arrObj.length - 1][1].breweries[index][brew[0]] = mainObj.states[state].breweries[brew[0]]
         })
     }
 
-    //TODO remove
+    //TODO remove testing later
     arrObj[1][1].breweries[0]['10-barrel-brewing-co-bend-1'].city = '###########################'
-    console.log(mainObj, 50)
-    console.log(arrObj, 100)
+    console.log(mainObj, 'MAIN OBJ')
+    console.log(arrObj, 'ARR OBJ')
 }
 
 /**
