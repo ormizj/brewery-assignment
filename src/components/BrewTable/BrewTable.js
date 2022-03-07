@@ -23,18 +23,12 @@ function BrewTable() {
      */
     useEffect(() => {
         getBreweries().then(response => {
-            if (!response.data) throw response;
-
             //instantiating "mainObj"
             const tempObj = createMainObj()
-            for (let { state, city, street, id: brewery } of response.data) {
+            for (let { state, city, street, id: brewery } of response) {
                 objInsertBrew(tempObj, { state, city, street, brewery })
             }
             setMainObj(tempObj)
-
-        }).catch(error => {
-            console.error(error)
-            alert("There was a problem with the request")
         })
     }, [])
 
