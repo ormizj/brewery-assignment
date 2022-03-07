@@ -15,6 +15,7 @@ export const arrObjTemplate = () => {
     return arrObjTemplate
 }
 
+//TODO remove later
 /**
  * Complexity- Time: O(n); Space: O(n);
  * 
@@ -63,7 +64,8 @@ export const objToArr = (mainObj) => {
     }
 
     //TODO remove testing later
-    arrObj[1][1].breweries[0]['10-barrel-brewing-co-bend-1'].city = '###########################'
+    arrObj[1][1].breweries[0]['10-barrel-brewing-co-bend-1'].city = 'Z##########################'
+    sortArrObj(arrObj)
     console.log(mainObj, 'MAIN OBJ')
     console.log(arrObj, 'ARR OBJ')
 }
