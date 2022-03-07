@@ -47,7 +47,6 @@ export const objToArr = (mainObj) => {
     const arrObj = []
     const states = Object.keys(mainObj.states)
 
-
     for (let state of states) {
         arrObj.push([state])
         arrObj[arrObj.length - 1][1] = {
@@ -55,15 +54,19 @@ export const objToArr = (mainObj) => {
             breweries: []
         }
 
-        for (let brewery of Object.entries(mainObj.states)) {
-
-        }
-
+        Object.entries(mainObj.states[state].breweries).forEach((brewery, index) => {
+            arrObj[arrObj.length - 1][1].breweries[index] = [brewery[1].city]
+            arrObj[arrObj.length - 1][1].breweries[index][brewery[0]] = mainObj.states[state].breweries[brewery[0]]
+        })
     }
 
 
+    arrObj[1][1].breweries[0]['10-barrel-brewing-co-bend-1'].city = '###########################'
 
-    //     console.log(arrObj)
+
+
+    console.log(mainObj, 50)
+    console.log(arrObj, 100)
 
 
 
