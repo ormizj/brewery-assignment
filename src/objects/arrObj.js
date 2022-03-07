@@ -60,16 +60,10 @@ export const objToArr = (mainObj) => {
         })
     }
 
-
+    //TODO remove
     arrObj[1][1].breweries[0]['10-barrel-brewing-co-bend-1'].city = '###########################'
-
-
-
     console.log(mainObj, 50)
     console.log(arrObj, 100)
-
-
-
 }
 
 /**
