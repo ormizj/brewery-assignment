@@ -24,22 +24,49 @@ export const arrObjTemplate = () => {
  * @param {JSON} mainObj
  * @returns {Array} param mainObj as an Array
  */
+// export const objToArr = (mainObj) => {
+//     //cloning "Obj" to remove aliasing 
+//     const cloneObj = _.cloneDeep(mainObj)
+//     const arrObj = (Object.entries(cloneObj.states))
+
+//     //creating the "breweries" array for the "arrObj"
+//     const tempBrews = [[]]
+//     arrObj.forEach((element, index) => {
+//         tempBrews[index] = []
+//         Object.entries(cloneObj.states[element[0]].breweries).forEach((brewE, brewI) => {
+//             tempBrews[index][brewI] = [brewE[1].city, brewE[0], brewE[1].street]
+//         })
+//         arrObj[index][1].breweries = tempBrews[index]
+//     })
+
+//     return arrObj
+// }
+
 export const objToArr = (mainObj) => {
     //cloning "Obj" to remove aliasing 
-    const cloneObj = _.cloneDeep(mainObj)
-    const arrObj = (Object.entries(cloneObj.states))
+    const arrObj = []
+    const states = Object.keys(mainObj.states)
 
-    //creating the "breweries" array for the "arrObj"
-    const tempBrews = [[]]
-    arrObj.forEach((element, index) => {
-        tempBrews[index] = []
-        Object.entries(cloneObj.states[element[0]].breweries).forEach((brewE, brewI) => {
-            tempBrews[index][brewI] = [brewE[1].city, brewE[0], brewE[1].street]
-        })
-        arrObj[index][1].breweries = tempBrews[index]
-    })
 
-    return arrObj
+    for (let state of states) {
+        arrObj.push([state])
+        arrObj[arrObj.length - 1][1] = {
+            stateName: state,
+            breweries: []
+        }
+
+        for (let brewery of Object.entries(mainObj.states)) {
+
+        }
+
+    }
+
+
+
+    //     console.log(arrObj)
+
+
+
 }
 
 /**
