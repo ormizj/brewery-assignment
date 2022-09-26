@@ -4,6 +4,7 @@
 /* function to delete brewery from an array. deletes the state if it contains no breweries */
 //  const arrObj = props.arrObj
 //
+//
 //deleting brewery from "arrObj" (and states if empty)
 // for (let value of values) {
 //     arrObj.forEach((element, index) => {
